@@ -3,7 +3,7 @@
 A real-time factory simulation bridging **CODESYS SoftPLC** and **Node-RED**.
 
 ## 🎥 Demo
-![Dashboard Demo](media/Dashboard_Animation.gif)
+![Dashboard Demo](Media/Dashboard_Animation.gif)
 
 ## 🛠️ Tech Stack
 * **Source:** CODESYS Control Win V3 (IEC 61131-3 Structured Text)
