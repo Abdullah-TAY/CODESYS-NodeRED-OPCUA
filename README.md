@@ -1,10 +1,9 @@
-# Industrial IoT Simulation 🏭
+# Industrial IoT Simulation -CODESYS-NodeRED-OPCUA 🏭
 
 A real-time factory simulation bridging **CODESYS SoftPLC** and **Node-RED**.
 
 ## 🎥 Demo
 ![Dashboard Demo](media/Dashboard_Animation.gif)
-*(Note: Make sure the filename matches exactly what you uploaded to the media folder)*
 
 ## 🛠️ Tech Stack
 * **Source:** CODESYS Control Win V3 (IEC 61131-3 Structured Text)
