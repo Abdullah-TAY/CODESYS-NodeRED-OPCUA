@@ -1,0 +1,555 @@
+[
+    {
+        "id": "5f27635a70b00d9b",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "inject_rpm",
+        "type": "inject",
+        "z": "5f27635a70b00d9b",
+        "name": "Subscribe fRPM",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL_SensorData.fRPM",
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "7a73bdc792716748"
+            ]
+        ]
+    },
+    {
+        "id": "inject_pressure",
+        "type": "inject",
+        "z": "5f27635a70b00d9b",
+        "name": "Subscribe fPressure",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL_SensorData.fPressure",
+        "x": 260,
+        "y": 320,
+        "wires": [
+            [
+                "7a73bdc792716748"
+            ]
+        ]
+    },
+    {
+        "id": "inject_temp",
+        "type": "inject",
+        "z": "5f27635a70b00d9b",
+        "name": "Subscribe fTemperature",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL_SensorData.fTemperature",
+        "x": 250,
+        "y": 400,
+        "wires": [
+            [
+                "7a73bdc792716748"
+            ]
+        ]
+    },
+    {
+        "id": "inject_flow",
+        "type": "inject",
+        "z": "5f27635a70b00d9b",
+        "name": "Subscribe fFlow",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1.5",
+        "topic": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL_SensorData.fFlow",
+        "x": 270,
+        "y": 500,
+        "wires": [
+            [
+                "7a73bdc792716748"
+            ]
+        ]
+    },
+    {
+        "id": "7a73bdc792716748",
+        "type": "OpcUa-Client",
+        "z": "5f27635a70b00d9b",
+        "endpoint": "485c2d2cad176df6",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "x": 540,
+        "y": 360,
+        "wires": [
+            [
+                "4fab3652bf31187c",
+                "cbb12c4c9e3af3bd"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4fab3652bf31187c",
+        "type": "debug",
+        "z": "5f27635a70b00d9b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fd56b7e42aab172e",
+        "type": "ui-gauge",
+        "z": "5f27635a70b00d9b",
+        "name": "RPM",
+        "group": "d1d27aac0a8abea9",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "rounded",
+        "title": "RPM",
+        "alwaysShowTitle": true,
+        "floatingTitlePosition": "top-left",
+        "units": "rpm",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#a8f5ff",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "15",
+                "color": "#55dbec",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "35",
+                "color": "#53b4fd",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#2397d1",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "0",
+        "max": "1500",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1170,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cbb12c4c9e3af3bd",
+        "type": "function",
+        "z": "5f27635a70b00d9b",
+        "name": "function 1",
+        "func": "// Round to 1 decimal place (e.g., 12.3)\nmsg.payload = Number(msg.payload.toFixed(1));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 360,
+        "wires": [
+            [
+                "traffic_switch"
+            ]
+        ]
+    },
+    {
+        "id": "traffic_switch",
+        "type": "switch",
+        "z": "5f27635a70b00d9b",
+        "name": "Sort by Sensor",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "fRPM",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "fPressure",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "fTemperature",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "fFlow",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 940,
+        "y": 440,
+        "wires": [
+            [
+                "fd56b7e42aab172e"
+            ],
+            [
+                "78d3540e356e4324"
+            ],
+            [
+                "e0e7a7b85616a128"
+            ],
+            [
+                "9c59cace934b916c"
+            ]
+        ]
+    },
+    {
+        "id": "78d3540e356e4324",
+        "type": "ui-gauge",
+        "z": "5f27635a70b00d9b",
+        "name": "PRESSURE",
+        "group": "d1d27aac0a8abea9",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "rounded",
+        "title": "Pressure",
+        "alwaysShowTitle": true,
+        "floatingTitlePosition": "top-left",
+        "units": "bar",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#a8f5ff",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "15",
+                "color": "#55dbec",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "35",
+                "color": "#53b4fd",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#2397d1",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "200",
+        "max": "400",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1170,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c59cace934b916c",
+        "type": "ui-gauge",
+        "z": "5f27635a70b00d9b",
+        "name": "FLOW",
+        "group": "d1d27aac0a8abea9",
+        "order": 4,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "rounded",
+        "title": "FLOW",
+        "alwaysShowTitle": true,
+        "floatingTitlePosition": "top-left",
+        "units": "L/min",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#a8f5ff",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "15",
+                "color": "#55dbec",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "35",
+                "color": "#53b4fd",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#2397d1",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "200",
+        "max": "1000",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1150,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0e7a7b85616a128",
+        "type": "ui-gauge",
+        "z": "5f27635a70b00d9b",
+        "name": "TEMPERATURE",
+        "group": "d1d27aac0a8abea9",
+        "order": 3,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "rounded",
+        "title": "TEMP",
+        "alwaysShowTitle": true,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#a8f5ff",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "15",
+                "color": "#55dbec",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "35",
+                "color": "#53b4fd",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#2397d1",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "20",
+        "max": "90",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1190,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "485c2d2cad176df6",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://localhost:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "d1d27aac0a8abea9",
+        "type": "ui-group",
+        "name": "Sensor_Data",
+        "page": "page_basic",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "page_basic",
+        "type": "ui-page",
+        "name": "Simple Dashboard",
+        "ui": "dash_ui_base",
+        "path": "/dashboard",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "light",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": true,
+        "disabled": false
+    },
+    {
+        "id": "dash_ui_base",
+        "type": "ui-base",
+        "name": "Main Control",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 5,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "d0db866599349b66",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-opcua": "0.2.340",
+            "@flowfuse/node-red-dashboard": "1.30.0"
+        }
+    }
+]
